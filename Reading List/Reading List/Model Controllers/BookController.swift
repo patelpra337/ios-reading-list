@@ -23,7 +23,11 @@ class BookController {
     }
     
     // MARK: - CRUD (Create, Read, Update, Delete)
-    
+    func createBook(withTitle title: String, withReasonToRead reasonToRead: String) {
+        let book = Book(title: title, reasonToRead: reasonToRead)
+        books.append(book)
+        saveToPersistentStore()
+    }
     
     
     // MARK: - Save to disk
