@@ -8,9 +8,6 @@
 
 import UIKit
 
-protocol BookTableViewCellDelegate: class {
-    func toggleHasBeenRead(for cell: BookTableViewCell)
-}
 class BookTableViewCell: UITableViewCell {
     
     var book: Book? {
@@ -26,7 +23,7 @@ class BookTableViewCell: UITableViewCell {
         delegate?.toggleHasBeenRead(for: self)
     }
     
-    weak var delegate: BookTableViewCellDelegate?
+    weak var delegate: BookTableviewCellDelegate?
     
     private func updateViews() {
         guard let book = self.book else { return }
