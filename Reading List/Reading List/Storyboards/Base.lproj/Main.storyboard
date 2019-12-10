@@ -41,6 +41,9 @@
                                                     <state key="normal" title="Button" image="unchecked">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="checkViewBox:" destination="tRD-iE-d92" eventType="touchUpInside" id="FXU-TH-7Pj"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -53,6 +56,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="bookLabel" destination="Woe-Ek-kNg" id="KTk-9w-gML"/>
+                                    <outlet property="checkViewBox" destination="po2-DB-nRa" id="pve-sQ-TsG"/>
                                     <segue destination="dwG-i7-Zcj" kind="show" identifier="ToDetail" id="At7-Tl-OIg"/>
                                 </connections>
                             </tableViewCell>

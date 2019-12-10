@@ -29,6 +29,24 @@ class BookController {
         saveToPersistentStore()
     }
     
+    func deleteBook(at index: Int, book: Book) {
+        guard let index = books.firstIndex(of: book) else { return }
+        books.remove(at: index)
+        saveToPersistentStore()
+    }
+    
+    func updateHasBeenRead(for book: Book) {
+        guard let index = books.firstIndex(of: book) else { return }
+        books[index].hasBeenRead = !books[index].hasBeenRead
+        saveToPersistentStore()
+    }
+    
+    func updateBook(for book: Book, withTitle title: String, withReasonToRead reasonToRead: String) {
+        guard let index = books.firstIndex(of: book) else { return }
+        books[index].title = title
+        books[index].reasonToRead = reasonToRead
+        saveToPersistentStore()
+    }
     
     // MARK: - Save to disk
     func saveToPersistentStore() {

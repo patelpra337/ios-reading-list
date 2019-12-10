@@ -8,8 +8,36 @@
 
 import UIKit
 
+protocol BookTableViewCellDelegate: class {
+    func toggleHasBeenRead(for cell: BookTableViewCell)
+}
 class BookTableViewCell: UITableViewCell {
+    
+    var book: Book? {
+        didSet {
+            updateViews()
+        }
+    }
 
-
-
+    @IBOutlet weak var bookLabel: UILabel!
+    @IBOutlet weak var checkViewBox: UIButton!
+    
+    @IBAction func checkViewBox(_ sender: Any) {
+        delegate?.toggleHasBeenRead(for: self)
+    }
+    
+    weak var delegate: BookTableViewCellDelegate?
+    
+    private func updateViews() {
+        guard let book = self.book else { return }
+        self.bookLabel.text = book.title
+        
+        if book.hasBeenRead == true {
+            let checked = UIImage(named: "checked")
+            self.checkViewBox.setImage(checked, for: .normal)
+        } else {
+            let unchecked = UIImage(named: "unchecked")
+            self.checkViewBox.setImage(unchecked, for: .normal)
+        }
+    }    
 }
