@@ -23,6 +23,7 @@ class BookTableViewCell: UITableViewCell {
         delegate?.toggleHasBeenRead(for: self)
     }
     
+    // MARK: - 
     weak var delegate: BookTableviewCellDelegate?
     
     private func updateViews() {

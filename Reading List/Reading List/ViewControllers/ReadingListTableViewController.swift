@@ -27,6 +27,7 @@ class ReadingListTableViewController: UITableViewController, BookTableviewCellDe
         return 2
     }
 
+    // MARK: -
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -36,6 +37,7 @@ class ReadingListTableViewController: UITableViewController, BookTableviewCellDe
         }
     }
     
+    // MARK: -
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -45,6 +47,7 @@ class ReadingListTableViewController: UITableViewController, BookTableviewCellDe
         }
     }
     
+    // MARK: -
     func toggleHasBeenRead(for cell: BookTableViewCell) {
         guard let index = self.tableView.indexPath(for: cell) else { return }
         let book = bookFor(indexPath: index)
@@ -52,6 +55,7 @@ class ReadingListTableViewController: UITableViewController, BookTableviewCellDe
         tableView.reloadData()
       }
     
+    // MARK: -
     private func bookFor(indexPath: IndexPath) -> Book {
         if indexPath.section == 0 {
             return bookController.readBooks[indexPath.row]
@@ -60,6 +64,7 @@ class ReadingListTableViewController: UITableViewController, BookTableviewCellDe
         }
     }
 
+    // MARK: - 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ReadList", for: indexPath) as? BookTableViewCell else { return  UITableViewCell() }
 
@@ -73,7 +78,7 @@ class ReadingListTableViewController: UITableViewController, BookTableviewCellDe
         return cell
     }
 
-    // MARK: - Navigation
+    // MARK: - Navigation - Why two if blocks?
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddToDetail" {
