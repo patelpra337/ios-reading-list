@@ -22,6 +22,14 @@ class BookController {
         return documentDirectory.appendingPathComponent("ReadingList.plist")
     }
     
+    var readBooks: [Book] {
+        return self.books.filter { ($0.hasBeenRead == true) }
+    }
+    
+    var unreadBooks: [Book] {
+        return self.books.filter { ($0.hasBeenRead == false ) }
+    }
+    
     // MARK: - CRUD (Create, Read, Update, Delete)
     func createBook(withTitle title: String, withReasonToRead reasonToRead: String) {
         let book = Book(title: title, reasonToRead: reasonToRead)
